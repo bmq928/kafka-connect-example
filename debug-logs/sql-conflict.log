@@ -1,0 +1,122 @@
+org.apache.kafka.connect.errors.RetriableException: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:108)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.deliverMessages(WorkerSinkTask.java:582)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.poll(WorkerSinkTask.java:330)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.iteration(WorkerSinkTask.java:232)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.execute(WorkerSinkTask.java:201)
+	at org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)
+	at org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:237)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.getAllMessagesException(JdbcSinkTask.java:150)
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:102)
+	... 11 more
+[2021-10-15 07:17:30,812] INFO Attempting to open connection #1 to PostgreSql (io.confluent.connect.jdbc.util.CachedConnectionProvider)
+[2021-10-15 07:17:30,820] INFO JdbcDbWriter Connected (io.confluent.connect.jdbc.sink.JdbcDbWriter)
+[2021-10-15 07:17:30,829] INFO Checking PostgreSql dialect for existence of TABLE "incomming6" (io.confluent.connect.jdbc.dialect.GenericDatabaseDialect)
+[2021-10-15 07:17:30,841] INFO Using PostgreSql dialect TABLE "incomming6" present (io.confluent.connect.jdbc.dialect.GenericDatabaseDialect)
+[2021-10-15 07:17:30,853] INFO Checking PostgreSql dialect for type of TABLE "incomming6" (io.confluent.connect.jdbc.dialect.GenericDatabaseDialect)
+[2021-10-15 07:17:30,863] INFO Setting metadata for table "incomming6" to Table{name='"incomming6"', type=TABLE columns=[Column{'message', isPrimaryKey=false, allowsNull=false, sqlType=text}, Column{'orgId', isPrimaryKey=false, allowsNull=false, sqlType=text}, Column{'userId', isPrimaryKey=false, allowsNull=false, sqlType=text}, Column{'payload', isPrimaryKey=false, allowsNull=false, sqlType=text}, Column{'action', isPrimaryKey=false, allowsNull=false, sqlType=text}]} (io.confluent.connect.jdbc.util.TableDefinitions)
+[2021-10-15 07:17:30,866] WARN Write of 1 records failed, remainingRetries=0 (io.confluent.connect.jdbc.sink.JdbcSinkTask)
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+	at org.postgresql.jdbc.BatchResultHandler.handleError(BatchResultHandler.java:169)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2286)
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:521)
+	at org.postgresql.jdbc.PgStatement.internalExecuteBatch(PgStatement.java:878)
+	at org.postgresql.jdbc.PgStatement.executeBatch(PgStatement.java:901)
+	at org.postgresql.jdbc.PgPreparedStatement.executeBatch(PgPreparedStatement.java:1644)
+	at io.confluent.connect.jdbc.sink.BufferedRecords.executeUpdates(BufferedRecords.java:221)
+	at io.confluent.connect.jdbc.sink.BufferedRecords.flush(BufferedRecords.java:187)
+	at io.confluent.connect.jdbc.sink.JdbcDbWriter.write(JdbcDbWriter.java:80)
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:84)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.deliverMessages(WorkerSinkTask.java:582)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.poll(WorkerSinkTask.java:330)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.iteration(WorkerSinkTask.java:232)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.execute(WorkerSinkTask.java:201)
+	at org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)
+	at org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:237)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2553)
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2285)
+	... 19 more
+[2021-10-15 07:17:30,867] ERROR Failing task after exhausting retries; encountered 3 exceptions on last write attempt. For complete details on each exception, please enable DEBUG logging. (io.confluent.connect.jdbc.sink.JdbcSinkTask)
+[2021-10-15 07:17:30,868] ERROR WorkerSinkTask{id=converter-0} Task threw an uncaught and unrecoverable exception. Task is being killed and will not recover until manually restarted. Error: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+ (org.apache.kafka.connect.runtime.WorkerSinkTask)
+org.apache.kafka.connect.errors.ConnectException: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:122)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.deliverMessages(WorkerSinkTask.java:582)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.poll(WorkerSinkTask.java:330)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.iteration(WorkerSinkTask.java:232)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.execute(WorkerSinkTask.java:201)
+	at org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)
+	at org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:237)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.getAllMessagesException(JdbcSinkTask.java:150)
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:102)
+	... 11 more
+[2021-10-15 07:17:30,870] ERROR WorkerSinkTask{id=converter-0} Task threw an uncaught and unrecoverable exception. Task is being killed and will not recover until manually restarted (org.apache.kafka.connect.runtime.WorkerTask)
+org.apache.kafka.connect.errors.ConnectException: Exiting WorkerSinkTask due to unrecoverable exception.
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.deliverMessages(WorkerSinkTask.java:610)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.poll(WorkerSinkTask.java:330)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.iteration(WorkerSinkTask.java:232)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.execute(WorkerSinkTask.java:201)
+	at org.apache.kafka.connect.runtime.WorkerTask.doRun(WorkerTask.java:188)
+	at org.apache.kafka.connect.runtime.WorkerTask.run(WorkerTask.java:237)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+Caused by: org.apache.kafka.connect.errors.ConnectException: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:122)
+	at org.apache.kafka.connect.runtime.WorkerSinkTask.deliverMessages(WorkerSinkTask.java:582)
+	... 10 more
+Caused by: java.sql.SQLException: Exception chain:
+java.sql.BatchUpdateException: Batch entry 0 INSERT INTO "incomming6" ("action","message","orgId","payload","userId") VALUES ('kame','kame','asdkf','{"kame":"joko"}','1') ON CONFLICT ("action","message","orgId","payload","userId") DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+org.postgresql.util.PSQLException: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification
+
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.getAllMessagesException(JdbcSinkTask.java:150)
+	at io.confluent.connect.jdbc.sink.JdbcSinkTask.put(JdbcSinkTask.java:102)
+	... 11 more
+
+
+
+java.sql.BatchUpdateException: Batch entry 0  ON CONFLICT DO NOTHING was aborted: ERROR: there is no unique or exclusion constraint matching the ON CONFLICT specification  Call getNextException to see other errors in the batch.

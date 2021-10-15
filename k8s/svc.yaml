@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-cp-kafka-connect
+  namespace: kafka
+  labels:
+    app: cp-kafka-connect
+spec:
+  ports:
+    - name: kafka-connect
+      port: 8083
+    - name: metrics
+      port: 5556
+  selector:
+    app: cp-kafka-connect

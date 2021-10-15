@@ -1,0 +1,15 @@
+{
+  "name": "connector-kafka",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@kafkajs/confluent-schema-registry": "^3.0.1",
+    "express": "^4.17.1",
+    "kafkajs": "^1.15.0",
+    "nodemon": "^2.0.13"
+  }
+}
